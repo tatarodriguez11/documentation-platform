@@ -1,4 +1,4 @@
-type Branding = {
+export type Branding = {
   name: string;
   logo: string;
   primaryColor: string;
@@ -20,7 +20,7 @@ export const brands: Record<string, Branding> = {
   },
   fintech: {
     name: 'FinDocs',
-    logo: '/logo-fintech.png',
+    logo: '/logo-fintech.webp',
     primaryColor: '#14B8A6',
     description: 'APIs and docs for financial products.',
   },
