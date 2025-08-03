@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { getAllBlogPosts, getBlogPostBySlug } from '@/lib/contentful';
 import { renderRichText } from '@/lib/richTextRenderers';
 import { getBranding } from '@/lib/branding';
+import { notFound } from 'next/navigation';
 
 type Props = {
   params: { slug: string };
@@ -9,13 +10,19 @@ type Props = {
 
 export async function generateStaticParams() {
   const posts = await getAllBlogPosts();
-  return posts.map((post) => ({ slug: post.slug }));
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
 }
 
 export default async function BlogPostPage({ params }: Props) {
   const post = await getBlogPostBySlug(params.slug);
   const brand = await getBranding();
 
+  if (!post) {
+    notFound();
+  }
+  
   return (
     <article className="max-w-3xl mx-auto p-6 pt-16">
       <h1 className="text-4xl font-bold mb-1" style={{ color: brand.primaryColor }}>
