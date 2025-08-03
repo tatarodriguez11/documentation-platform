@@ -4,7 +4,7 @@ import MainLayout from '@/components/layouts/MainLayout';
 import { getBranding } from '@/lib/branding';
 import { type Metadata } from 'next';
 
-const branding = getBranding(); // solo se ejecuta en build
+const branding = getBranding();
 
 export const metadata: Metadata = {
   title: branding.name,
