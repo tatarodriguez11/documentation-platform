@@ -3,42 +3,48 @@ export type TutorialStep = {
   title: string;
   description: string;
   codeExample: string;
+  language: 'bash' | 'json' | 'http' | 'javascript';
 };
 
 export const tutorialSteps: TutorialStep[] = [
   {
     id: 1,
-    title: '1. Get Started with the API',
-    description: `To begin using the Petstore API, you'll first need to understand the base URL and how requests are structured.
+    title: '1. Get the Base URL',
+    description: `
+To begin using the Petstore API, understand where to send your requests.
 
 **Base URL**: \`https://petstore3.swagger.io/api/v3\`
 
-All endpoints are available under this URL. Most of them are public, but some (like adding pets) require authentication.`,
+All public endpoints are under this base path.`,
     codeExample: `curl https://petstore3.swagger.io/api/v3/pet/findByStatus?status=available`,
+    language: 'bash',
   },
   {
     id: 2,
-    title: '2. Authenticate (Get an API Token)',
-    description: `Some endpoints (like POST, PUT, DELETE operations) require user authentication.
+    title: '2. Authenticate and Retrieve a Token',
+    description: `
+Some operations require authentication (e.g. creating or updating pets).
 
-To authenticate, use the "Login" endpoint:
+To log in:
 
-- Go to: \`/user/login\`
-- You need to provide a valid username and password. Use any of the test accounts listed in the docs (e.g., \`username: user1\`, \`password: pass123\`).
+- Endpoint: \`/user/login\`
+- Use test credentials:  
+  \`username: user1\`  
+  \`password: pass123\`
 
-**Note**: Upon login, you will receive a JWT token in the response headers under \`api_key\`.`,
+You'll receive a token under the \`api_key\` header.`,
     codeExample: `curl -X GET "https://petstore3.swagger.io/api/v3/user/login?username=user1&password=pass123"`,
+    language: 'bash',
   },
   {
     id: 3,
-    title: '3. Use the Token to Authorize Requests',
-    description: `After successful login, include the \`api_key\` token in the request header.
-
-For example, if your token is \`abc123\`, you must include this header:
+    title: '3. Authorize API Requests',
+    description: `
+After login, include the token in your request header:
 
 \`api_key: abc123\`
 
-Here's how to create a new pet (requires auth):`,
+Here’s an example of how to create a new pet (requires authentication):`,
     codeExample: `curl -X POST "https://petstore3.swagger.io/api/v3/pet" \\
   -H "accept: application/json" \\
   -H "Content-Type: application/json" \\
@@ -48,27 +54,32 @@ Here's how to create a new pet (requires auth):`,
     "photoUrls": ["https://example.com/fluffy.jpg"],
     "status": "available"
   }'`,
+    language: 'bash',
   },
   {
     id: 4,
-    title: '4. Retrieve Pet by ID',
-    description: `Once a pet has been added, you can retrieve its information using its \`id\`.
+    title: '4. Retrieve a Pet by ID',
+    description: `
+Once a pet is created, you can retrieve it by its ID:
 
-Use this to verify the pet exists and confirm the creation was successful.`,
+- Endpoint: \`/pet/{petId}\`
+- Example: \`/pet/1001\``,
     codeExample: `curl https://petstore3.swagger.io/api/v3/pet/1001`,
+    language: 'bash',
   },
   {
     id: 5,
-    title: '5. Error Handling',
-    description: `If you make a request without proper authorization or with incorrect data, the API will respond with meaningful error messages.
+    title: '5. Handle Errors Gracefully',
+    description: `
+Pay attention to HTTP status codes to understand what went wrong:
 
-Always check the HTTP status code:
 - \`200 OK\`: Success
-- \`400 Bad Request\`: Input data is invalid
-- \`401 Unauthorized\`: Token missing or invalid
-- \`404 Not Found\`: Resource does not exist
+- \`400 Bad Request\`: Invalid input
+- \`401 Unauthorized\`: Missing/invalid token
+- \`404 Not Found\`: Resource doesn't exist
 
-Here's an example of an invalid request:`,
+Here’s an example of an invalid request:`,
     codeExample: `curl https://petstore3.swagger.io/api/v3/pet/invalid-id`,
+    language: 'bash',
   },
 ];

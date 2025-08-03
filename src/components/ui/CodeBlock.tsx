@@ -2,8 +2,7 @@
 
 import React, { useState } from 'react';
 import { Highlight, type Language } from 'prism-react-renderer';
-import github from 'prism-react-renderer/themes/github';
-import dracula from 'prism-react-renderer/themes/dracula';
+import { getCodeTheme } from '@/lib/getCodeTheme';
 import { Copy, Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { type Branding } from '@/lib/branding';
@@ -17,11 +16,6 @@ interface CodeBlockProps {
   showCopyButton?: boolean;
 }
 
-const availableThemes = {
-  github,
-  dracula,
-};
-
 export const CodeBlock: React.FC<CodeBlockProps> = ({
   code,
   language,
@@ -31,7 +25,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
   showCopyButton = true,
 }) => {
   const [copied, setCopied] = useState(false);
-  const theme = availableThemes[branding.codeBlockTheme ?? 'github'];
+  const theme = getCodeTheme(branding.codeBlockTheme ?? 'github');
 
   const copyToClipboard = async () => {
     try {
