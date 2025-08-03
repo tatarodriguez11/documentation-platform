@@ -43,7 +43,7 @@ export const brands: Record<string, Branding> = {
 };
 
 export const getBranding = (): Branding => {
-  const brand = process.env.BRAND || 'default';
+  const brand = process.env.NEXT_PUBLIC_BRAND || 'default';
   const branding = brands[brand];
 
   if (!branding) {
