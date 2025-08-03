@@ -2,10 +2,10 @@
 
 import React, { useState } from 'react';
 import { Highlight, type Language } from 'prism-react-renderer';
-import { getCodeTheme } from '@/lib/getCodeTheme';
-import { Copy, Check } from 'lucide-react';
+import { Check, Copy } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { type Branding } from '@/lib/branding';
+import { getCodeTheme } from '@/lib/getCodeTheme';
 
 interface CodeBlockProps {
   code: string;
@@ -39,40 +39,37 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
 
   return (
     <div className="relative group">
-      <Highlight
-        theme={theme}
-        code={code.trim()}
-        language={language}
-      >
+      {showCopyButton && (
+        <button
+          onClick={copyToClipboard}
+          className={cn(
+            'absolute top-2 right-2 z-10 p-2 rounded-md',
+            'opacity-0 group-hover:opacity-100 transition-opacity duration-200',
+            'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600',
+            'hover:bg-gray-50 dark:hover:bg-gray-700',
+            'flex items-center justify-center'
+          )}
+          aria-label="Copy code"
+        >
+          {copied ? (
+            <Check className="w-4 h-4 text-green-600" />
+          ) : (
+            <Copy className="w-4 h-4 text-gray-600 dark:text-gray-400" />
+          )}
+        </button>
+      )}
+
+      <Highlight theme={theme} code={code.trim()} language={language}>
         {({ className: highlightClassName, style, tokens, getLineProps, getTokenProps }) => (
           <pre
             className={cn(
-              'relative p-4 overflow-x-auto rounded-lg text-sm',
+              'overflow-x-auto rounded-lg text-sm p-4 pr-14',
               'border border-gray-200 dark:border-gray-700',
               highlightClassName,
               className
             )}
             style={style}
           >
-            {showCopyButton && (
-              <button
-                onClick={copyToClipboard}
-                className={cn(
-                  'absolute top-2 right-2 p-2 rounded-md',
-                  'opacity-0 group-hover:opacity-100 transition-opacity duration-200',
-                  'flex items-center justify-center',
-                  'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600',
-                  'hover:bg-gray-50 dark:hover:bg-gray-700'
-                )}
-                aria-label="Copy code"
-              >
-                {copied ? (
-                  <Check className="w-4 h-4 text-green-600" />
-                ) : (
-                  <Copy className="w-4 h-4 text-gray-600 dark:text-gray-400" />
-                )}
-              </button>
-            )}
             <code>
               {tokens.map((line, i) => (
                 <div key={i} {...getLineProps({ line })}>
@@ -82,7 +79,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
                     </span>
                   )}
                   {line.map((token, key) => (
-                    <span key={key} {...getTokenProps({ token })} />
+                    <span key={key} {...getTokenProps({ token })} style={{paddingRight:'3.5rem'}}/>
                   ))}
                 </div>
               ))}

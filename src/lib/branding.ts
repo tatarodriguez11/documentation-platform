@@ -11,7 +11,7 @@ export type Branding = {
 
 export const brands: Record<string, Branding> = {
   default: {
-    name: 'Docs Platform',
+    name: 'Pets Platform',
     logo: '/logo-default.png',
     primaryColor: '#1E3A8A',
     accentColor: '#3B82F6',
@@ -21,23 +21,23 @@ export const brands: Record<string, Branding> = {
     codeBlockTheme: 'github',
   },
   solar: {
-    name: 'SolarTech Docs',
+    name: 'SolarPets',
     logo: '/logo-solartech.png',
-    primaryColor: '#EAB308',
-    accentColor: '#FACC15',
-    backgroundColor: '#FFFBEB',
-    textColor: '#78350F',
-    description: 'Documentation platform for solar engineers.',
+    primaryColor: '#B45309',
+    accentColor: '#FBBF24',
+    backgroundColor: '#FDFCF8',
+    textColor: '#1F2937',
+    description: 'Documentation platform for solar pets.',
     codeBlockTheme: 'github',
   },
   fintech: {
-    name: 'FinDocs',
+    name: 'FinPets',
     logo: '/logo-fintech.webp',
     primaryColor: '#14B8A6',
     accentColor: '#2DD4BF',
     backgroundColor: '#F0FDFA',
     textColor: '#0F766E',
-    description: 'APIs and docs for financial products.',
+    description: 'APIs and docs for pets.',
     codeBlockTheme: 'dracula',
   },
 };
