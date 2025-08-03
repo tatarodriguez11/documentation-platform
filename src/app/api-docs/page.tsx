@@ -1,6 +1,7 @@
 'use client';
 
 import { brands } from '@/lib/branding';
+import Image from 'next/image';
 import { RedocStandalone } from 'redoc';
 
 export default function ApiDocsPage() {
@@ -13,7 +14,7 @@ export default function ApiDocsPage() {
       style={{ backgroundColor: brand.backgroundColor }}
     >
       <div className="flex items-center gap-4 mb-6 pt-10">
-        <img src={brand.logo} alt={`${brand.name} logo`} className="h-10" />
+        <Image src={brand.logo} alt={`${brand.name} logo`} className="h-10" width={50} height={60}/>
         <h1 className="text-xl font-semibold" style={{ color: brand.textColor }}>
           {brand.name}
         </h1>

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { getAllBlogPosts, getBlogPostBySlug } from '@/lib/contentful';
 import { renderRichText } from '@/lib/richTextRenderers';
 import { getBranding } from '@/lib/branding';
@@ -25,14 +26,14 @@ export default async function BlogPostPage({ params }: Props) {
       {post.author && (
         <div className="flex items-center gap-3 mb-6">
           {post.author.avatar && (
-            <img src={post.author.avatar} alt={post.author.name} className="w-10 h-10 rounded-full" />
+            <Image src={post.author.avatar} alt={post.author.name} className="w-10 h-10 rounded-full" width={40} height={40}/>
           )}
           <span className="text-sm text-gray-700">By {post.author.name}</span>
         </div>
       )}
 
       {post.image && (
-        <img src={post.image} alt={post.title} className="w-full rounded mb-6" />
+        <Image src={post.image} alt={post.title} className="w-full rounded mb-6" width={200} height={150} />
       )}
 
       <div className="prose dark:prose-invert max-w-none">{renderRichText(post.content)}</div>

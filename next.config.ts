@@ -8,6 +8,9 @@ const nextConfig: NextConfig = {
     NEXT_PUBLIC_BRAND: brand,
   },
   output: 'export',
+  images: {
+    unoptimized: true,
+  },
 };
 
 export default nextConfig;

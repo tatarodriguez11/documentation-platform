@@ -1,5 +1,6 @@
 import { getAllBlogPosts } from '@/lib/contentful';
 import Link from 'next/link';
+import Image from 'next/image';
 import { getBranding } from '@/lib/branding';
 
 export default async function BlogPage() {
@@ -16,10 +17,12 @@ export default async function BlogPage() {
           <Link key={post.slug} href={`/blog/${post.slug}`}>
             <article className="border rounded-lg overflow-hidden hover:shadow transition bg-white dark:bg-black">
               {post.image && (
-                <img
+                <Image
                   src={post.image}
                   alt={post.title}
                   className="w-full h-52 object-cover"
+                  width={500}
+                  height={300}
                 />
               )}
               <div className="p-4">

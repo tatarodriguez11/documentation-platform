@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
@@ -25,10 +26,12 @@ export const Header = ({ branding }: { branding: Branding }) => {
           href="/"
           className="flex items-center gap-2 text-white font-semibold text-lg"
         >
-          <img
+          <Image
             src={branding.logo}
             alt={`${branding.name} logo`}
             className="h-8 w-auto"
+            width={80}
+            height={24}
           />
           {branding.name}
         </Link>
