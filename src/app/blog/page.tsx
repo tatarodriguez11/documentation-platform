@@ -8,7 +8,7 @@ export default async function BlogPage() {
   const brand = await getBranding();
 
   return (
-    <main className="max-w-5xl mx-auto p-6 pt-14">
+    <main className="max-w-5xl mx-auto p-6 pt-16">
       <h1 className="text-4xl font-bold mb-8" style={{ color: brand.primaryColor }}>
         Blog
       </h1>

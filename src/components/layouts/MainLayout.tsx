@@ -23,7 +23,7 @@ export default function MainLayout({ children, branding }: Props) {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -24 }}
           transition={{ duration: 0.3 }}
-          className="min-h-[calc(100vh-160px)] p-4"
+          className="min-h-[calc(100vh-160px)] flex items-center justify-center"
         >
           {children}
         </motion.main>

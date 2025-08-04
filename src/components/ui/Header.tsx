@@ -60,7 +60,11 @@ export const Header = ({ branding }: { branding: Branding }) => {
       <AnimatePresence>
         {isOpen && (
           <motion.nav
-            className="md:hidden px-4 pb-4 bg-white shadow"
+            className="md:hidden px-4 pb-4 shadow"
+            style={{
+              backgroundColor: branding.backgroundColor,
+              color: branding.textColor,
+            }}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
