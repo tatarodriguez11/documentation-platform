@@ -8,34 +8,49 @@ export default async function BlogPage() {
   const brand = await getBranding();
 
   return (
-    <main className="max-w-5xl mx-auto p-6 pt-16">
-      <h1 className="text-4xl font-bold mb-8" style={{ color: brand.primaryColor }}>
+    <main className="max-w-6xl mx-auto px-6 pt-24">
+      <h1
+        className="text-4xl font-bold mb-12 tracking-tight"
+        style={{ color: brand.primaryColor }}
+      >
         Blog
       </h1>
-      <div className="grid md:grid-cols-2 gap-6">
+
+      <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
         {posts.map((post) => (
-          <Link key={post.slug} href={`/blog/${post.slug}`}>
-            <article className="border rounded-lg overflow-hidden hover:shadow transition bg-white dark:bg-black">
+          <Link key={post.slug} href={`/blog/${post.slug}`} className="group">
+            <article
+              className="flex flex-col h-full bg-white dark:bg-zinc-900 border rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300"
+              style={{
+                borderColor: brand.primaryColor,
+              }}
+            >
               {post.image && (
-                <Image
-                  src={post.image}
-                  alt={post.title}
-                  className="w-full h-52 object-cover"
-                  width={500}
-                  height={300}
-                />
+                <div className="relative w-full h-48 md:h-52">
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    className="object-cover"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    priority
+                  />
+                </div>
               )}
-              <div className="p-4">
+
+              <div className="flex flex-col flex-1 p-5">
                 <h2
-                  className="text-xl font-semibold mb-1"
+                  className="text-lg font-semibold mb-1 group-hover:underline"
                   style={{ color: brand.primaryColor }}
                 >
                   {post.title}
                 </h2>
-                <p className="text-sm text-gray-500">
+                <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">
                   {new Date(post.date).toLocaleDateString()}
                 </p>
-                <p className="text-gray-700 mt-2">{post.subtitle}</p>
+                <p className="text-sm text-gray-700 dark:text-gray-300 line-clamp-3">
+                  {post.subtitle}
+                </p>
               </div>
             </article>
           </Link>

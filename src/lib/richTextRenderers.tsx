@@ -22,8 +22,10 @@ export function renderRichText(document: Document): ReactNode {
           if (typeof url !== 'string') return null;
 
           return (
-            <figure className={fullWidth ? 'w-full' : 'w-[80%] mx-auto'}>
-              <Image src={url} alt={caption || ''} className="w-full rounded" width={500} height={250}/>
+            <figure className={fullWidth ? 'w-full my-8' : 'w-[80%] mx-auto my-8'}>
+              <Image src={url} alt={caption || ''} width={800}
+              height={500}
+              className="rounded-lg shadow-sm w-full h-auto object-cover"/>
               {caption && (
                 <figcaption className="text-sm text-center text-gray-500 mt-2">
                   {caption}
