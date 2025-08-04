@@ -8,6 +8,9 @@ const branding = getBranding();
 export const metadata: Metadata = {
   title: branding.name,
   description: branding.description,
+  icons: {
+    icon: branding.favicon || '/favicon.ico',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -7,6 +7,7 @@ export type Branding = {
   textColor?: string;
   description: string;
   codeBlockTheme?: 'github' | 'dracula';
+  favicon?: string;
 };
 
 export const brands: Record<string, Branding> = {
@@ -19,6 +20,7 @@ export const brands: Record<string, Branding> = {
     textColor: '#0F172A', 
     description: 'Official documentation for the Swagger PetStore API. Manage pets, users, and store orders efficiently.',
     codeBlockTheme: 'dracula',
+    favicon: '/favicon-default.ico'
   },
   store: {
     name: 'OrderFlow API',
@@ -29,6 +31,7 @@ export const brands: Record<string, Branding> = {
     textColor: '#7F1D1D',
     description: 'Backend order processing and inventory management documentation.',
     codeBlockTheme: 'github',
+    favicon: '/favicon-store.ico'
   },
   user: {
     name: 'UserManager Docs',
@@ -39,6 +42,7 @@ export const brands: Record<string, Branding> = {
     textColor: '#064E3B',
     description: 'Endpoints related to user creation, authentication, and account management.',
     codeBlockTheme: 'dracula',
+    favicon: '/favicon-user.ico'
   },
 };
 
