@@ -1,4 +1,3 @@
-// app/page.tsx (o donde tengas tu landing principal)
 'use client';
 
 import { getBranding } from '@/lib/branding';

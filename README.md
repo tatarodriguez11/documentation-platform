@@ -33,6 +33,7 @@ Each brand can define:
 - `description`
 - `primaryColor`, `accentColor`, `textColor`, `backgroundColor`
 - `logo`
+- `favicon`
 - Code theme (`github`, `dracula`, etc.)
 
 Example:
@@ -48,6 +49,7 @@ export const brands = {
     textColor: '#0F172A', 
     description: 'Official documentation for the Swagger PetStore API. Manage pets, users, and store orders efficiently.',
     codeBlockTheme: 'dracula',
+    favicon: '/favicon-default.ico'
   },
 };
 ```
