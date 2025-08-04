@@ -33,7 +33,7 @@ export default function HomePage() {
 
         <div className="flex flex-wrap gap-4 justify-center">
           <Link
-            href="/docs"
+            href="/api-docs"
             className="px-6 py-3 rounded-lg font-semibold text-white"
             style={{ backgroundColor: branding.accentColor }}
           >
