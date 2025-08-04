@@ -21,7 +21,7 @@ type AuthorSkeleton = EntrySkeletonType<{
   avatar: EntryFieldTypes.AssetLink;
 }>;
 
-type BlogPostSkeleton = EntrySkeletonType<{
+export type BlogPostSkeleton = EntrySkeletonType<{
   title: EntryFieldTypes.Symbol;
   slug: EntryFieldTypes.Symbol;
   shortDescription: EntryFieldTypes.Text;
@@ -31,6 +31,14 @@ type BlogPostSkeleton = EntrySkeletonType<{
   seoFields: EntryFieldTypes.EntryLink<SeoSkeleton>;
   author: EntryFieldTypes.EntryLink<AuthorSkeleton>;
 }>;
+
+export type BlogSlug = {
+  slug: string;
+  title: string;
+  subtitle: string;
+  date: string;
+  image?: string;
+};
 
 function isResolvedEntry<T extends EntrySkeletonType>(
   entry: unknown
@@ -55,7 +63,7 @@ function getAssetUrl(asset: unknown): string | undefined {
   return undefined;
 }
 
-export async function getAllBlogPosts() {
+export async function getAllBlogPosts(): Promise<BlogSlug[]> {
   const response = await client.getEntries<BlogPostSkeleton>({
     content_type: 'pageBlogPost',
     order: ['-fields.publishedDate'],
